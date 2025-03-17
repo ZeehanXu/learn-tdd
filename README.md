@@ -1,4 +1,5 @@
 # JEST tutorial for test-driven development
+
 Learn how to write unit tests and other kinds of tests
 
 # Setup
@@ -32,10 +33,10 @@ Clean the database
 
 # Description
 
-This repository illustrates how to use jest to write unit tests 
+This repository illustrates how to use jest to write unit tests
 for a server in typescript. The examples are as follows:
 
-- `tests/authorSchema.test.ts`: Unit tests to verify the schema of the authors colletion. 
+- `tests/authorSchema.test.ts`: Unit tests to verify the schema of the authors colletion.
 - `tests/bookDetailsService.test.ts`: Unit tests to verify the behavior of the service that is used to retrieve the details of a particular book.
 - `tests/createBookService.test.ts`: Unit tests to verify if a book is created successfully.
 
@@ -43,7 +44,7 @@ for a server in typescript. The examples are as follows:
 
 ## Part 1
 
-Write a unit test for the GET /authors service. 
+Write a unit test for the GET /authors service.
 The service should respond with a list of author names and lifetimes sorted by family name of the authors. It should respond
 with a "No authors found" message when there are no authors in the database. If an error occurs when retrieving the authors then the
 service responds with an error code of 500. The unit test
@@ -53,10 +54,18 @@ should be placed in `tests/authorService.test.ts`.
 
 Briefly explain a limitation of the tests in `tests/authorSchema.test.ts` in the space below.
 
-
+One limitation is that the tests rely heavily on mocked Mongoose methods (like countDocuments, find, and findOne). This means they don't verify the actual database interaction or schema behavior in a real environment, potentially missing issues that might arise when Mongoose executes actual queries.
 
 ## Part 3
 
 Generate the coverage report for the tests you wrote. How can you improve
-your tests using the coverage report? Briefly explain your 
+your tests using the coverage report? Briefly explain your
 process in the space below.
+
+Answer:
+
+From the coverage my tests to the GET /authors service is complete.
+
+I use the coverage report to pinpoint areas of my code that are not exercised by my current tests. Specifically, I review the report to identify functions, branches, or conditional paths that are missing testing, and use "Uncovered Lines" to check what's exactly missing. Then, I add tests targeting those untested lines—such as error conditions or edge cases—to ensure all scenarios are covered.
+
+I run the coverage tool again to verify that my new tests improve coverage, and I iterate until I am satisfied that all logical paths are exercised.
